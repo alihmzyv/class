@@ -14,10 +14,9 @@ public class Envelope5 {
             for (int col = 0; col < width; col++) {
                 if (row == firstRow || //firstRow
                         row == firstRow +1 ||// second row
-                        col == firstCol || col == firstCol + 1 ||                  // firstCol
-                        col == lastCol ||  col == lastCol -1 ||                   // lastCol
-                        row == lastRow ||   // lastRow
-                        row == lastRow - 1 || // one before lastRow
+                        col == firstCol || col == firstCol + 1 ||                  // first and second col
+                        col == lastCol ||  col == lastCol -1 ||                   // last and one before last col
+                        row == lastRow ||  row == lastRow - 1  || // lastRow and one before lastRow
                         col == Math.round(row * k)||        // diagonal 1
                         col == lastCol - Math.round(row * k)// diagonal 2
                 )
@@ -32,7 +31,7 @@ public class Envelope5 {
 
     public static void main(String[] args) {
         /** input data */
-        int height = 8;
+        int height = 11;
         int width = 22;
 
         /** call the business logic extracted and decoupled from input and output */
