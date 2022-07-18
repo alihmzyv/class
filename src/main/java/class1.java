@@ -16,5 +16,5 @@ public class class1 {
 
         return min;
     }
-    
+
 }
