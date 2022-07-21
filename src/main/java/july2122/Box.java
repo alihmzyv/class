@@ -1,5 +1,7 @@
 package july2122;
 
+import java.util.Arrays;
+
 public class Box {
     private double a;
     private double b;
@@ -11,13 +13,30 @@ public class Box {
         this.c = c;
     }
 
+    public Box(double[] dims) {
+        this.a = dims[0];
+        this.b = dims[1];
+        this.c = dims[2];
+    }
+
     public double volume() {
         return a*b*c;
     }
 
     public boolean canBePutInto(Box box) {
-        return ((!(this.a > box.a || this.a > box.b || this.a > box.c)) &&
-                (!(this.b > box.a || this.b > box.b || this.b > box.c)) &&
-                (!(this.c > box.a || this.c > box.b || this.c > box.c)));
+        boolean canBePutInto = true;
+        double[] dims1 = new double[]{this.a, this.b, this.c};
+        double[] dims2 = new double[]{box.a, box.b, box.c};
+        Arrays.sort(dims1);
+        Arrays.sort(dims2);
+
+        for (int i = 0; i < dims1.length; i++) {
+            if (dims1[i] < dims2[i]) {
+                canBePutInto = false;
+                break;
+            }
+        }
+
+        return canBePutInto;
     }
 }
