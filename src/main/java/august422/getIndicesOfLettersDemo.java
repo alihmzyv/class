@@ -17,7 +17,7 @@ public class getIndicesOfLettersDemo {
         char letter;
         for (int i = 0; i < str.length(); i++) {
             letter = str.charAt(i);
-            if (letter >= 97 && letter<= 122) {
+            if (Character.isLetter(letter)) {
                 letters.add(letter);
             }
         }
@@ -26,10 +26,9 @@ public class getIndicesOfLettersDemo {
         HashSet<Character> uniqueLetters = new HashSet<>(letters);
 
 
-        Character ch;
-        List<Integer> indices;
+        //map into key: letter, value: indices
         for (var uniqueLetter: uniqueLetters) {
-            indices = new ArrayList<>();
+            List<Integer> indices = new ArrayList<>();
             for (int i = 0; i < str.length(); i++) {
                 if (uniqueLetter == str.charAt(i)) {
                     indices.add(i);
