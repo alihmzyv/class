@@ -10,29 +10,32 @@ public class getIndicesOfLettersDemo {
 
     public static HashMap<Character, List<Integer>> getIndicesOfLetters(String str) {
         HashMap<Character, List<Integer>> result = new HashMap<>();
+        str = str.toLowerCase();
 
-        String letters = str.toLowerCase().replaceAll("[^a-z]", ""); //convert to lowercase, erase non-letter characters
-
-        //get the letters as Character[]
-        Character[] lettersArr = new Character[letters.length()];
-        for (int i = 0; i < letters.length(); i++) {
-            lettersArr[i] = letters.charAt(i);
+        //get the letters as Character List
+        List<Character> letters = new ArrayList<>();
+        char letter;
+        for (int i = 0; i < str.length(); i++) {
+            letter = str.charAt(i);
+            if (letter >= 97 && letter<= 122) {
+                letters.add(letter);
+            }
         }
 
         //get Set of letters
-        HashSet<Character> uniqueLetters = new HashSet<>(Arrays.asList(lettersArr));
+        HashSet<Character> uniqueLetters = new HashSet<>(letters);
 
 
         Character ch;
         List<Integer> indices;
-        for (char letter: uniqueLetters) {
+        for (var uniqueLetter: uniqueLetters) {
             indices = new ArrayList<>();
             for (int i = 0; i < str.length(); i++) {
-                if (letter == str.charAt(i)) {
+                if (uniqueLetter == str.charAt(i)) {
                     indices.add(i);
                 }
             }
-            result.put(letter, indices);
+            result.put(uniqueLetter, indices);
         }
 
         return result;
