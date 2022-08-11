@@ -42,7 +42,7 @@ public class FindSubintervals {
     }
 
     public static boolean isSubinterval(Interval i1, Interval i2) {
-        return i1.getLowerBound() >= i2.getLowerBound() && i1.getUpperBound() < i2.getUpperBound();
+        return i1.getLowerBound() >= i2.getLowerBound() && i1.getUpperBound() <= i2.getUpperBound();
     }
 }
 
