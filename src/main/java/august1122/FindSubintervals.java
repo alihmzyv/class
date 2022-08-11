@@ -21,7 +21,12 @@ public class FindSubintervals {
         Iterator<Integer> integerIterator = boundsSorted.iterator();
 
         while (integerIterator.hasNext()) {
-            Interval interval = new Interval(integerIterator.next(), integerIterator.next());
+            Integer lowerBound = integerIterator.next();
+            Integer upperBound = lowerBound + 1;
+            Interval interval = new Interval();
+            if (boundsSorted.containsAll(List.of(lowerBound, upperBound))) {
+                interval = new Interval(lowerBound, lowerBound + 1);
+            }
             int count = 0;
 
             for (Interval intervalGiven: intervals) {
@@ -37,7 +42,7 @@ public class FindSubintervals {
     }
 
     public static boolean isSubinterval(Interval i1, Interval i2) {
-        return i1.getLowerBound() >= i2.getLowerBound() && i1.getUpperBound() <= i2.getUpperBound();
+        return i1.getLowerBound() >= i2.getLowerBound() && i1.getUpperBound() < i2.getUpperBound();
     }
 }
 
@@ -48,6 +53,9 @@ class Interval implements Comparable<Interval> {
     public Interval(int lowerBound, int upperBound) {
         this.lowerBound = lowerBound;
         this.upperBound = upperBound;
+    }
+
+    public Interval() {
     }
 
     public int getLowerBound() {
