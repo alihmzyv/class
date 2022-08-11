@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class getIndicesOfLettersDemo {
     public static void main(String[] args) {
-        HashMap<Character, List<Integer>> result = getIndicesOfLetters("Hello");
+        HashMap<Character, List<Integer>> result = getIndicesOfLetters("X,sdjgss");
         for (char key: result.keySet()) {
             System.out.printf("%s: count = %d, indices: %s\n", key, result.get(key).size(), result.get(key));
         }
