@@ -20,13 +20,14 @@ public class FindSubintervals {
         SortedMap<Interval, Integer> intervalCountSortedMap = new TreeMap<>();
         Iterator<Integer> integerIterator = boundsSorted.iterator();
 
+
+        Integer nextLowerBound = integerIterator.next();
         while (integerIterator.hasNext()) {
-            Integer lowerBound = integerIterator.next();
-            Integer upperBound = lowerBound + 1;
-            Interval interval = new Interval();
-            if (boundsSorted.containsAll(List.of(lowerBound, upperBound))) {
-                interval = new Interval(lowerBound, lowerBound + 1);
-            }
+            Integer lowerBound = nextLowerBound;
+            Integer upperBound = integerIterator.next();
+            nextLowerBound = upperBound;
+
+            Interval interval = new Interval(lowerBound, upperBound);
             int count = 0;
 
             for (Interval intervalGiven: intervals) {
