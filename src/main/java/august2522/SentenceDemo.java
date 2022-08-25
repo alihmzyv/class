@@ -1,7 +1,5 @@
 package august2522;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -12,13 +10,8 @@ public class SentenceDemo {
         //take each subject + verb and map to subject + verb + all objects
         return subjects.stream()
                 .flatMap(subject -> verbs.stream()
-                        .map(verb -> new ArrayList<>(List.of(subject, verb))))
-                .flatMap(subjectVerb -> objects.stream().map(object -> {
-                    List<String> sentence = new ArrayList<>(subjectVerb);
-                    sentence.add(object);
-                    return sentence;
-                }))
-                .map(sentence -> String.join(" ", sentence))
+                        .map(verb -> subject + " " + verb))
+                .flatMap(subjectVerb -> objects.stream().map(object -> subjectVerb + " " + object))
                 .collect(Collectors.toList());
     }
 
