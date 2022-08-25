@@ -60,11 +60,7 @@ public class Pos implements Comparable<Pos> {
 
     @Override
     public int compareTo(Pos o) {
-        int flag = this.x - o.x;
-        if (flag == 0) {
-            flag = this.y - o.y;
-        }
-        return flag;
+        return this.toString().compareTo(o.toString());
     }
 }
 
