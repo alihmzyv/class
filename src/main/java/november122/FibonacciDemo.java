@@ -7,6 +7,9 @@ import java.util.stream.IntStream;
 public class FibonacciDemo {
     public static List<Integer> getFibonacciSequence(int firstN) {
         List<Integer> sequence = new ArrayList<>();
+        if (firstN <= 0) {
+            throw new IllegalArgumentException("Number of elements should be greater than 0");
+        }
         if (firstN == 1) {
             sequence.add(0);
             return sequence;
@@ -22,6 +25,6 @@ public class FibonacciDemo {
     }
 
     public static void main(String[] args) {
-        System.out.println(getFibonacciSequence(10));
+        System.out.println(getFibonacciSequence(2));
     }
 }
