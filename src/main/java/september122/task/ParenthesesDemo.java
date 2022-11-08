@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class ParenthesesDemo {
     public static void main(String[] args) {
-        System.out.println(findDeepestLevel("{{{{{}}}}}"));
+        System.out.println(findDeepestLevel("{{}{}}"));
     }
     public static int findDeepestLevel(String str) {
         String onlyParentheses = str.replaceAll("\\s", "");
@@ -28,6 +28,8 @@ public class ParenthesesDemo {
                 [onlyParentheses.length() - 1];
     }
 
+
+    //copied from the solution of the previous task
     public static boolean isValid(String s) {
 
         Stack<Character> brackets = new Stack<>();
